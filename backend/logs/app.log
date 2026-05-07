@@ -1,0 +1,40 @@
+[2026-05-03 12:59:20,695] [INFO] chat | File: views.py | Line: 114 | User message saved | session_id=1 | message_id=12
+[2026-05-03 12:59:22,389] [INFO] chat | File: views.py | Line: 134 | Gemini response received | status=404
+[2026-05-03 12:59:22,389] [ERROR] chat | File: views.py | Line: 137 | Gemini API error | status=404 | response={
+  "error": {
+    "code": 404,
+    "message": "models/gemini-1.5-flash is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.",
+    "status": "NOT_FOUND"
+  }
+}
+
+[2026-05-03 12:59:22,395] [INFO] chat | File: views.py | Line: 153 | AI message saved | session_id=1 | message_id=13
+[2026-05-03 13:05:00,669] [INFO] chat | File: views.py | Line: 114 | User message saved | session_id=1 | message_id=14
+[2026-05-03 13:05:08,678] [INFO] chat | File: views.py | Line: 134 | Gemini response received | status=200
+[2026-05-03 13:05:08,688] [INFO] chat | File: views.py | Line: 153 | AI message saved | session_id=1 | message_id=15
+[2026-05-03 13:06:54,310] [INFO] chat | File: views.py | Line: 114 | User message saved | session_id=1 | message_id=16
+[2026-05-03 13:06:56,847] [INFO] chat | File: views.py | Line: 134 | Gemini response received | status=200
+[2026-05-03 13:06:56,853] [INFO] chat | File: views.py | Line: 153 | AI message saved | session_id=1 | message_id=17
+[2026-05-03 13:40:52,519] [INFO] chat | File: views.py | Line: 114 | User message saved | session_id=1 | message_id=18
+[2026-05-03 13:41:04,556] [INFO] chat | File: views.py | Line: 134 | Gemini response received | status=200
+[2026-05-03 13:41:04,566] [INFO] chat | File: views.py | Line: 153 | AI message saved | session_id=1 | message_id=19
+[2026-05-03 14:11:59,207] [INFO] chat | File: views.py | Line: 115 | User message saved | session_id=1 | message_id=20
+[2026-05-03 14:12:00,850] [INFO] chat | File: views.py | Line: 135 | Distance calculated | session_id=1 | success=True
+[2026-05-03 14:12:00,854] [INFO] chat | File: views.py | Line: 187 | AI message saved | session_id=1 | message_id=21
+[2026-05-03 14:12:43,338] [INFO] chat | File: views.py | Line: 115 | User message saved | session_id=1 | message_id=22
+[2026-05-03 14:12:44,472] [INFO] chat | File: views.py | Line: 135 | Distance calculated | session_id=1 | success=True
+[2026-05-03 14:12:44,475] [INFO] chat | File: views.py | Line: 187 | AI message saved | session_id=1 | message_id=23
+[2026-05-04 09:57:05,975] [INFO] chat | File: views.py | Line: 115 | User message saved | session_id=1 | message_id=24
+[2026-05-04 09:57:08,737] [INFO] chat | File: views.py | Line: 164 | Gemini response received | status=200
+[2026-05-04 09:57:08,739] [INFO] chat | File: views.py | Line: 187 | AI message saved | session_id=1 | message_id=25
+[2026-05-06 18:27:00,764] [INFO] chat | File: views.py | Line: 51 | Chat session created | user=testuser | session_id=2 | title=New Chat
+[2026-05-06 18:27:01,024] [INFO] chat | File: views.py | Line: 116 | User message saved | session_id=2 | message_id=26
+[2026-05-06 18:27:06,178] [INFO] chat | File: views.py | Line: 155 | AI message saved | session_id=2 | message_id=27
+[2026-05-06 18:28:00,049] [INFO] chat | File: views.py | Line: 116 | User message saved | session_id=2 | message_id=28
+[2026-05-07 10:29:29,466] [INFO] chat | File: views.py | Line: 51 | Chat session created | user=testuser | session_id=3 | title=New Chat
+[2026-05-07 10:29:29,720] [INFO] chat | File: views.py | Line: 116 | User message saved | session_id=3 | message_id=29
+[2026-05-07 10:29:38,467] [INFO] chat | File: views.py | Line: 155 | AI message saved | session_id=3 | message_id=30
+[2026-05-07 10:30:20,644] [INFO] chat | File: views.py | Line: 116 | User message saved | session_id=3 | message_id=31
+[2026-05-07 10:30:30,260] [INFO] chat | File: views.py | Line: 155 | AI message saved | session_id=3 | message_id=32
+[2026-05-07 13:04:52,176] [INFO] chat | File: views.py | Line: 116 | User message saved | session_id=3 | message_id=33
+[2026-05-07 13:04:54,994] [INFO] chat | File: views.py | Line: 155 | AI message saved | session_id=3 | message_id=34
