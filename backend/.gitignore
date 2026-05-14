@@ -1,0 +1,30 @@
+# Environment variables
+.env
+backend/.env
+
+# Generated files
+media/
+backend/media/
+
+# Logs
+logs/
+backend/logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+db.sqlite3
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Node
+node_modules/
+frontend/node_modules/
+dist/
+build/

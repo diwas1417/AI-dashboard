@@ -11,6 +11,10 @@ from .models import ChatSession, ChatMessage
 from .serializers import ChatSessionSerializer, ChatMessageSerializer
 
 from .services import calculate_distance_between_addresses, ask_gemini
+from .pdf_market_service import extract_pdf_text, call_openai_for_market_trends
+from .market_chart import generate_market_trend_chart
+from .extracted_json import save_extracted_json
+from django.conf import settings
 
 logger = logging.getLogger("chat")
 
@@ -163,3 +167,71 @@ class ChatMessageListView(APIView):
             },
             status=status.HTTP_201_CREATED,
         )
+
+
+from django.conf import settings
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+
+from .pdf_market_service import extract_pdf_text, call_openai_for_market_trends
+from .market_chart import generate_market_trend_chart
+from .extracted_json import save_extracted_json
+
+
+class MarketTrendPDFAnalysisView(APIView):
+    def post(self, request):
+        pdf_file = request.FILES.get("pdf")
+
+        if not pdf_file:
+            return Response(
+                {"status": "error", "message": "PDF file is required."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        try:
+            extracted_text = extract_pdf_text(pdf_file)
+
+            if not extracted_text.strip():
+                return Response(
+                    {
+                        "status": "error",
+                        "message": "No readable text could be extracted from this PDF.",
+                    },
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
+
+            structured_data = call_openai_for_market_trends(extracted_text)
+
+            json_filename, json_filepath = save_extracted_json(structured_data)
+
+            chart_url, growth_summary = generate_market_trend_chart(structured_data)
+
+            full_chart_url = (
+                request.build_absolute_uri(chart_url) if chart_url else None
+            )
+
+            json_url = request.build_absolute_uri(
+                f"{settings.MEDIA_URL}extracted_json/{json_filename}"
+            )
+
+            return Response(
+                {
+                    "status": "success",
+                    "extracted_data": structured_data,
+                    "json_file": json_filename,
+                    "json_url": json_url,
+                    "chart_url": full_chart_url,
+                    "growth_summary": growth_summary,
+                },
+                status=status.HTTP_200_OK,
+            )
+
+        except Exception as e:
+            return Response(
+                {
+                    "status": "error",
+                    "message": str(e),
+                },
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            )

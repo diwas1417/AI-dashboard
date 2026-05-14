@@ -38,3 +38,14 @@
 [2026-05-07 10:30:30,260] [INFO] chat | File: views.py | Line: 155 | AI message saved | session_id=3 | message_id=32
 [2026-05-07 13:04:52,176] [INFO] chat | File: views.py | Line: 116 | User message saved | session_id=3 | message_id=33
 [2026-05-07 13:04:54,994] [INFO] chat | File: views.py | Line: 155 | AI message saved | session_id=3 | message_id=34
+[2026-05-10 13:19:33,782] [INFO] chat | File: views.py | Line: 51 | Chat session created | user=testuser | session_id=4 | title=New Chat
+[2026-05-10 13:19:34,043] [INFO] chat | File: views.py | Line: 116 | User message saved | session_id=4 | message_id=35
+[2026-05-10 13:19:36,794] [INFO] chat | File: views.py | Line: 136 | Distance calculated | session_id=4 | success=False
+[2026-05-10 13:19:36,796] [INFO] chat | File: views.py | Line: 155 | AI message saved | session_id=4 | message_id=36
+[2026-05-10 13:20:24,483] [INFO] chat | File: views.py | Line: 51 | Chat session created | user=testuser | session_id=5 | title=New Chat
+[2026-05-10 13:20:24,708] [INFO] chat | File: views.py | Line: 116 | User message saved | session_id=5 | message_id=37
+[2026-05-10 13:20:25,344] [INFO] chat | File: views.py | Line: 136 | Distance calculated | session_id=5 | success=True
+[2026-05-10 13:20:25,347] [INFO] chat | File: views.py | Line: 155 | AI message saved | session_id=5 | message_id=38
+[2026-05-10 13:20:46,677] [INFO] chat | File: views.py | Line: 116 | User message saved | session_id=5 | message_id=39
+[2026-05-11 09:37:46,522] [INFO] chat | File: views.py | Line: 51 | Chat session created | user=testuser | session_id=6 | title=New Chat
+[2026-05-11 09:37:46,661] [INFO] chat | File: views.py | Line: 116 | User message saved | session_id=6 | message_id=40

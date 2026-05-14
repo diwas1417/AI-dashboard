@@ -11,6 +11,9 @@ DEBUG = os.getenv("DEBUG", "False") == "True"
 
 ALLOWED_HOSTS = []
 
+# OpenAI API Key
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -87,6 +90,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+# Media files for generated chart images
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ALLOWED_ORIGINS = [
@@ -99,8 +106,10 @@ REST_FRAMEWORK = {
     ]
 }
 
+# Create logs folder automatically if missing
+LOG_DIR = BASE_DIR / "logs"
+LOG_DIR.mkdir(exist_ok=True)
 
-import os
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
@@ -114,7 +123,7 @@ LOGGING = {
         "app_file": {
             "level": "INFO",
             "class": "logging.FileHandler",
-            "filename": BASE_DIR / "logs" / "app.log",
+            "filename": LOG_DIR / "app.log",
             "formatter": "simple",
         },
     },
