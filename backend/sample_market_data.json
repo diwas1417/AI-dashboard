@@ -1,161 +1,161 @@
 {
-  "suburb_or_postcode": "Reservoir VIC 3073",
-  "report_type": "Houses Only",
+  "suburb_or_postcode": "EPPING VIC 3076",
+  "report_type": "Not verified",
   "pre_covid_table": [
     {
-      "Period": "2010",
-      "Properties Sold": "404",
-      "Median Value": "$485,461",
-      "Growth": "29.8%",
-      "Days on Market": "39",
-      "Listings": "421",
-      "Asking Rent": "$300"
-    },
-    {
-      "Period": "2011",
-      "Properties Sold": "383",
-      "Median Value": "$460,833",
-      "Growth": "-5.1%",
-      "Days on Market": "42",
-      "Listings": "401",
-      "Asking Rent": "$320"
-    },
-    {
-      "Period": "2012",
-      "Properties Sold": "305",
-      "Median Value": "$441,509",
-      "Growth": "-4.2%",
-      "Days on Market": "68",
-      "Listings": "383",
-      "Asking Rent": "$330"
-    },
-    {
-      "Period": "2013",
-      "Properties Sold": "311",
-      "Median Value": "$458,559",
-      "Growth": "3.9%",
-      "Days on Market": "44",
-      "Listings": "402",
-      "Asking Rent": "$320"
-    },
-    {
-      "Period": "2014",
-      "Properties Sold": "374",
-      "Median Value": "$555,107",
-      "Growth": "21.1%",
-      "Days on Market": "62",
-      "Listings": "450",
-      "Asking Rent": "$325"
-    },
-    {
-      "Period": "2015",
-      "Properties Sold": "457",
-      "Median Value": "$557,882",
-      "Growth": "0.5%",
-      "Days on Market": "40",
-      "Listings": "484",
+      "Period": "2019",
+      "Properties Sold": "98",
+      "Median Value": "$388,645",
+      "Growth": "-6.7%",
+      "Days on Market": "31",
+      "Listings": "164",
       "Asking Rent": "$340"
     },
     {
-      "Period": "2016",
-      "Properties Sold": "520",
-      "Median Value": "$644,970",
-      "Growth": "15.6%",
-      "Days on Market": "37",
-      "Listings": "503",
-      "Asking Rent": "$350"
+      "Period": "2018",
+      "Properties Sold": "119",
+      "Median Value": "$416,587",
+      "Growth": "20.1%",
+      "Days on Market": "35",
+      "Listings": "148",
+      "Asking Rent": "$330"
     },
     {
       "Period": "2017",
-      "Properties Sold": "434",
-      "Median Value": "$739,829",
-      "Growth": "14.7%",
-      "Days on Market": "37",
-      "Listings": "436",
-      "Asking Rent": "$360"
+      "Properties Sold": "131",
+      "Median Value": "$346,899",
+      "Growth": "5.3%",
+      "Days on Market": "55",
+      "Listings": "173",
+      "Asking Rent": "$325"
     },
     {
-      "Period": "2018",
-      "Properties Sold": "443",
-      "Median Value": "$811,152",
-      "Growth": "9.6%",
-      "Days on Market": "45",
-      "Listings": "432",
-      "Asking Rent": "$380"
+      "Period": "2016",
+      "Properties Sold": "113",
+      "Median Value": "$329,340",
+      "Growth": "4.7%",
+      "Days on Market": "74",
+      "Listings": "226",
+      "Asking Rent": "$310"
     },
     {
-      "Period": "2019",
-      "Properties Sold": "393",
-      "Median Value": "$742,723",
-      "Growth": "-8.4%",
-      "Days on Market": "40",
-      "Listings": "443",
-      "Asking Rent": "$400"
+      "Period": "2015",
+      "Properties Sold": "86",
+      "Median Value": "$314,655",
+      "Growth": "-0.8%",
+      "Days on Market": "43",
+      "Listings": "206",
+      "Asking Rent": "$307"
+    },
+    {
+      "Period": "2014",
+      "Properties Sold": "87",
+      "Median Value": "$317,070",
+      "Growth": "7.2%",
+      "Days on Market": "56",
+      "Listings": "150",
+      "Asking Rent": "$300"
+    },
+    {
+      "Period": "2013",
+      "Properties Sold": "76",
+      "Median Value": "$295,671",
+      "Growth": "-4.1%",
+      "Days on Market": "39",
+      "Listings": "143",
+      "Asking Rent": "$305"
+    },
+    {
+      "Period": "2012",
+      "Properties Sold": "93",
+      "Median Value": "$308,239",
+      "Growth": "-1.9%",
+      "Days on Market": "78",
+      "Listings": "87",
+      "Asking Rent": "$310"
+    },
+    {
+      "Period": "2011",
+      "Properties Sold": "115",
+      "Median Value": "$314,284",
+      "Growth": "4.4%",
+      "Days on Market": "55",
+      "Listings": "84",
+      "Asking Rent": "$300"
+    },
+    {
+      "Period": "2010",
+      "Properties Sold": "80",
+      "Median Value": "$300,905",
+      "Growth": "16.3%",
+      "Days on Market": "27",
+      "Listings": "58",
+      "Asking Rent": "$290"
     }
   ],
   "post_covid_table": [
     {
       "Period": "2020",
-      "Properties Sold": "347",
-      "Median Value": "$818,973",
-      "Growth": "10.3%",
-      "Days on Market": "53",
-      "Listings": "419",
-      "Asking Rent": "$400"
+      "Properties Sold": "74",
+      "Median Value": "$417,832",
+      "Growth": "7.5%",
+      "Days on Market": "47",
+      "Listings": "148",
+      "Asking Rent": "$350"
     },
     {
       "Period": "2021",
-      "Properties Sold": "302",
-      "Median Value": "$876,935",
+      "Properties Sold": "66",
+      "Median Value": "$447,439",
       "Growth": "7.1%",
-      "Days on Market": "42",
-      "Listings": "398",
-      "Asking Rent": "$410"
+      "Days on Market": "59",
+      "Listings": "138",
+      "Asking Rent": "$350"
     },
     {
       "Period": "2022",
-      "Properties Sold": "517",
-      "Median Value": "$994,818",
-      "Growth": "13.4%",
-      "Days on Market": "38",
-      "Listings": "496",
-      "Asking Rent": "$400"
+      "Properties Sold": "122",
+      "Median Value": "$499,281",
+      "Growth": "11.6%",
+      "Days on Market": "43",
+      "Listings": "191",
+      "Asking Rent": "$350"
     },
     {
       "Period": "2023",
-      "Properties Sold": "388",
-      "Median Value": "$877,940",
-      "Growth": "-11.7%",
-      "Days on Market": "30",
-      "Listings": "483",
-      "Asking Rent": "$430"
+      "Properties Sold": "97",
+      "Median Value": "$470,160",
+      "Growth": "-5.8%",
+      "Days on Market": "34",
+      "Listings": "145",
+      "Asking Rent": "$370"
     },
     {
       "Period": "2024",
-      "Properties Sold": "404",
-      "Median Value": "$954,715",
-      "Growth": "8.7%",
-      "Days on Market": "30",
-      "Listings": "453",
-      "Asking Rent": "$500"
+      "Properties Sold": "87",
+      "Median Value": "$483,140",
+      "Growth": "2.8%",
+      "Days on Market": "46",
+      "Listings": "133",
+      "Asking Rent": "$450"
     },
     {
       "Period": "2025",
-      "Properties Sold": "491",
-      "Median Value": "$917,264",
-      "Growth": "-3.9%",
-      "Days on Market": "47",
-      "Listings": "501",
-      "Asking Rent": "$550"
+      "Properties Sold": "109",
+      "Median Value": "$503,143",
+      "Growth": "4.1%",
+      "Days on Market": "51",
+      "Listings": "153",
+      "Asking Rent": "$460"
     },
     {
       "Period": "2026",
-      "Properties Sold": "539",
-      "Median Value": "$980,015",
-      "Growth": "6.8%",
-      "Days on Market": "45",
-      "Listings": "503",
-      "Asking Rent": "$565"
+      "Properties Sold": "125",
+      "Median Value": "$565,570",
+      "Growth": "12.4%",
+      "Days on Market": "29",
+      "Listings": "139",
+      "Asking Rent": "$490"
     }
   ]
 }

@@ -47,6 +47,7 @@ def format_y_axis(value, position):
 def get_label_style(year):
     """
     Returns manual placement for each year.
+
     direction:
         1  = above point
        -1  = below point
@@ -157,6 +158,7 @@ def generate_market_trend_chart(data):
 
     fig, ax = plt.subplots(figsize=(16, 9))
 
+    # Line stays behind text labels and growth boxes
     ax.plot(
         years,
         medians,
@@ -164,7 +166,7 @@ def generate_market_trend_chart(data):
         linewidth=2.2,
         markersize=6,
         color=blue,
-        zorder=2,
+        zorder=1,
     )
 
     max_value = max(medians)
@@ -252,6 +254,7 @@ def generate_market_trend_chart(data):
         fontsize=17,
         fontweight="bold",
         color=blue,
+        zorder=6,
     )
 
     ax.text(
@@ -262,6 +265,7 @@ def generate_market_trend_chart(data):
         fontsize=17,
         fontweight="bold",
         color=blue,
+        zorder=6,
     )
 
     # Growth summary boxes
@@ -280,13 +284,14 @@ def generate_market_trend_chart(data):
                 edgecolor="black",
                 alpha=0.95,
             ),
-            zorder=4,
+            zorder=6,
         )
 
+    # Post-COVID box moved lower for safer placement
     if growth_summary["post_covid_period_growth"] != "Not verified":
         ax.text(
             2023.2,
-            ymin + ((ymax - ymin) * 0.50),
+            ymin + ((ymax - ymin) * 0.22),
             f"Period Growth: {growth_summary['post_covid_period_growth']}%\n"
             f"Annual Growth: {growth_summary['post_covid_annual_growth']}% p.a.",
             fontsize=10.5,
@@ -298,7 +303,7 @@ def generate_market_trend_chart(data):
                 edgecolor="black",
                 alpha=0.95,
             ),
-            zorder=4,
+            zorder=6,
         )
 
     fig.text(

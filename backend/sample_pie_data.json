@@ -1,0 +1,101 @@
+{
+  "suburb_or_postcode": "Sunbury VIC 3429",
+  "household_structure": {
+    "total": 100.0,
+    "can_create_chart": true,
+    "items": [
+      {
+        "category": "Childless Couples",
+        "percentage": 34.5
+      },
+      {
+        "category": "Couples with Children",
+        "percentage": 47.2
+      },
+      {
+        "category": "Single Parents",
+        "percentage": 17.0
+      },
+      {
+        "category": "Other",
+        "percentage": 1.3
+      }
+    ]
+  },
+  "education_by_qualification": {
+    "total": 100.0,
+    "can_create_chart": true,
+    "items": [
+      {
+        "category": "Postgrad",
+        "percentage": 5.6
+      },
+      {
+        "category": "Graduate Diploma or Certificate",
+        "percentage": 4.4
+      },
+      {
+        "category": "Bachelor",
+        "percentage": 21.1
+      },
+      {
+        "category": "Advanced Diploma or Diploma",
+        "percentage": 18.2
+      },
+      {
+        "category": "Certificate",
+        "percentage": 40.4
+      },
+      {
+        "category": "Not Stated",
+        "percentage": 9.5
+      },
+      {
+        "category": "Inadequately Described",
+        "percentage": 0.8
+      }
+    ]
+  },
+  "employment_by_occupation": {
+    "total": 100.0,
+    "can_create_chart": true,
+    "items": [
+      {
+        "category": "Professional",
+        "percentage": 18.0
+      },
+      {
+        "category": "Clerical",
+        "percentage": 15.3
+      },
+      {
+        "category": "Trades",
+        "percentage": 16.5
+      },
+      {
+        "category": "Labourer",
+        "percentage": 8.1
+      },
+      {
+        "category": "Not Stated",
+        "percentage": 1.7
+      },
+      {
+        "category": "Machinery Operators and Drivers",
+        "percentage": 7.1
+      },
+      {
+        "category": "Managers",
+        "percentage": 11.7
+      },
+      {
+        "category": "Community and Personal Service Workers",
+        "percentage": 12.5
+      },
+      {
+        "category": "Sales Workers",
+        "percentage": 9.1
+      }
+    ]
+  }
+}
