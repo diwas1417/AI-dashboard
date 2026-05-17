@@ -1,30 +1,46 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://127.0.0.1:8000/api/chat";
+const API_ROOT = "http://127.0.0.1:8000";
 
-export async function createChatSession(title = "New Chat") {
-    const response = await axios.post(`${API_BASE_URL}/sessions/`, {
-        title,
+const MARKET_TREND_ENDPOINT = `${API_ROOT}/api/chat/market-trends/analyse/`;
+const SUBURB_PDF_ENDPOINT = `${API_ROOT}/api/chat/suburb-stats/pie-charts/`;
+
+export async function uploadMarketTrendPdf(file) {
+    const formData = new FormData();
+    formData.append("pdf", file);
+
+    const response = await axios.post(MARKET_TREND_ENDPOINT, formData, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
     });
 
     return response.data;
 }
 
-export async function sendMessage(sessionId, content) {
-    const response = await axios.post(
-        `${API_BASE_URL}/sessions/${sessionId}/messages/`,
-        {
-            content,
-        }
-    );
+export async function uploadSuburbPdf(file) {
+    const formData = new FormData();
+    formData.append("pdf", file);
+
+    const response = await axios.post(SUBURB_PDF_ENDPOINT, formData, {
+        headers: {
+            "Content-Type": "multipart/form-data",
+        },
+    });
 
     return response.data;
 }
 
-export async function getMessages(sessionId) {
-    const response = await axios.get(
-        `${API_BASE_URL}/sessions/${sessionId}/messages/`
-    );
+export function getFullMediaUrl(url) {
+    if (!url) return "";
 
-    return response.data;
+    if (url.startsWith("http://") || url.startsWith("https://")) {
+        return url;
+    }
+
+    if (url.startsWith("/")) {
+        return `${API_ROOT}${url}`;
+    }
+
+    return `${API_ROOT}/${url}`;
 }

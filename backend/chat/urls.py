@@ -1,15 +1,11 @@
 from django.urls import path
+
 from .views import (
     ChatSessionListCreateView,
     ChatMessageListView,
     MarketTrendPDFAnalysisView,
 )
-from .views import (
-    ChatSessionListCreateView,
-    ChatMessageListView,
-    MarketTrendPDFAnalysisView,
-    SuburbStatsPieChartAnalysisView,
-)
+
 from .pie_chart_views import (
     SuburbStatsPieChartFromJSONView,
     SuburbStatsPieChartAnalysisView,
@@ -37,11 +33,6 @@ urlpatterns = [
         "suburb-stats/pie-charts-from-json/",
         SuburbStatsPieChartFromJSONView.as_view(),
         name="suburb-stats-pie-charts-from-json",
-    ),
-    path(
-        "suburb-stats/pie-charts/",
-        SuburbStatsPieChartAnalysisView.as_view(),
-        name="suburb-stats-pie-charts",
     ),
     path(
         "suburb-stats/edit-pdf-from-sample-json/",

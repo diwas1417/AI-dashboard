@@ -72,7 +72,7 @@ class SuburbStatsPieChartAnalysisView(APIView):
 
     def post(self, request):
         pdf_file = request.FILES.get("pdf")
-
+        print('diwas pdf edit')
         if not pdf_file:
             return Response(
                 {"status": "error", "message": "PDF file is required."},
@@ -101,7 +101,7 @@ class SuburbStatsPieChartAnalysisView(APIView):
                     charts,
                 )
             )
-
+            full_edited_pdf_url = request.build_absolute_uri(edited_pdf_url)
             full_chart_urls = {}
             for key, value in charts.items():
                 full_chart_urls[key] = (
@@ -113,6 +113,7 @@ class SuburbStatsPieChartAnalysisView(APIView):
                     "status": "success",
                     "extracted_data": structured_data,
                     "charts": full_chart_urls,
+                    "edited_pdf_url": full_edited_pdf_url,
                     "edited_pdf_url": request.build_absolute_uri(edited_pdf_url),
                     "total_checks": {
                         "household_structure_total": structured_data.get(

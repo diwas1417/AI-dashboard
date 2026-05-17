@@ -181,7 +181,7 @@ class ChatMessageListView(APIView):
 class MarketTrendPDFAnalysisView(APIView):
     def post(self, request):
         pdf_file = request.FILES.get("pdf")
-
+        print("diwas")
         if not pdf_file:
             return Response(
                 {"status": "error", "message": "PDF file is required."},
@@ -222,68 +222,6 @@ class MarketTrendPDFAnalysisView(APIView):
                     "json_url": json_url,
                     "chart_url": full_chart_url,
                     "growth_summary": growth_summary,
-                },
-                status=status.HTTP_200_OK,
-            )
-
-        except Exception as e:
-            return Response(
-                {
-                    "status": "error",
-                    "message": str(e),
-                },
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            )
-
-
-class SuburbStatsPieChartAnalysisView(APIView):
-    def post(self, request):
-        pdf_file = request.FILES.get("pdf")
-
-        if not pdf_file:
-            return Response(
-                {"status": "error", "message": "PDF file is required."},
-                status=status.HTTP_400_BAD_REQUEST,
-            )
-
-        try:
-            extracted_text = extract_pdf_text_for_pie(pdf_file)
-
-            if not extracted_text.strip():
-                return Response(
-                    {
-                        "status": "error",
-                        "message": "No readable text could be extracted from this PDF.",
-                    },
-                    status=status.HTTP_400_BAD_REQUEST,
-                )
-
-            structured_data = call_openai_for_suburb_stats_pie(extracted_text)
-
-            charts = generate_all_pie_charts(structured_data)
-
-            full_chart_urls = {}
-            for key, value in charts.items():
-                full_chart_urls[key] = (
-                    request.build_absolute_uri(value) if value else None
-                )
-
-            return Response(
-                {
-                    "status": "success",
-                    "extracted_data": structured_data,
-                    "charts": full_chart_urls,
-                    "total_checks": {
-                        "household_structure_total": structured_data.get(
-                            "household_structure", {}
-                        ).get("total"),
-                        "education_by_qualification_total": structured_data.get(
-                            "education_by_qualification", {}
-                        ).get("total"),
-                        "employment_by_occupation_total": structured_data.get(
-                            "employment_by_occupation", {}
-                        ).get("total"),
-                    },
                 },
                 status=status.HTTP_200_OK,
             )
