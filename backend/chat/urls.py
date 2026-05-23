@@ -11,6 +11,7 @@ from .pie_chart_views import (
     SuburbStatsPieChartAnalysisView,
     SuburbStatsEditPDFFromSampleJSONView,
 )
+from .amenity_views import AmenityScoreAnalysisView
 
 urlpatterns = [
     path("sessions/", ChatSessionListCreateView.as_view(), name="chat-sessions"),
@@ -38,5 +39,10 @@ urlpatterns = [
         "suburb-stats/edit-pdf-from-sample-json/",
         SuburbStatsEditPDFFromSampleJSONView.as_view(),
         name="suburb-stats-edit-pdf-from-sample-json",
+    ),
+    path(
+        "amenity-score/",
+        AmenityScoreAnalysisView.as_view(),
+        name="amenity-score",
     ),
 ]
