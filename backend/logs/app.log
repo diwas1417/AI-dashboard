@@ -1,0 +1,25 @@
+[2026-05-18 01:29:23,028] [ERROR] chat | File: pie_chart_views.py | Line: 139 | Suburb stats pie chart analysis failed
+Traceback (most recent call last):
+  File "C:\Users\diwas\Desktop\New folder\ai-dashboard-chat\backend\chat\pie_chart_views.py", line 104, in post
+    edit_suburb_statistics_pdf_with_pie_charts(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        pdf_file,
+        ^^^^^^^^^
+        charts,
+        ^^^^^^^
+    )
+    ^
+  File "C:\Users\diwas\Desktop\New folder\ai-dashboard-chat\backend\chat\pdf_pie_editor.py", line 204, in edit_suburb_statistics_pdf_with_pie_charts
+    _replace_visual_section_after_abs_line(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        doc[7],
+        ^^^^^^^
+        household_chart_path,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\diwas\Desktop\New folder\ai-dashboard-chat\backend\chat\pdf_pie_editor.py", line 106, in _replace_visual_section_after_abs_line
+    raise ValueError(
+    ...<2 lines>...
+    )
+ValueError: Could not find ABS statistics line on page. PDF layout may be different.

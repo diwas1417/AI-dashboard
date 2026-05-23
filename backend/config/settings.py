@@ -37,7 +37,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
+X_FRAME_OPTIONS = "ALLOWALL"
 ROOT_URLCONF = "config.urls"
 
 TEMPLATES = [

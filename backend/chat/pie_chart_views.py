@@ -13,6 +13,11 @@ from .pie_chart_service import (
 )
 from .pdf_pie_editor import edit_suburb_statistics_pdf_with_pie_charts
 
+import traceback
+import logging
+
+logger = logging.getLogger("chat")
+
 
 class SuburbStatsPieChartFromJSONView(APIView):
     """
@@ -72,7 +77,7 @@ class SuburbStatsPieChartAnalysisView(APIView):
 
     def post(self, request):
         pdf_file = request.FILES.get("pdf")
-        print('diwas pdf edit')
+        print("diwas pdf edit")
         if not pdf_file:
             return Response(
                 {"status": "error", "message": "PDF file is required."},
@@ -131,10 +136,13 @@ class SuburbStatsPieChartAnalysisView(APIView):
             )
 
         except Exception as e:
+            logger.exception("Suburb stats pie chart analysis failed")
             return Response(
                 {
                     "status": "error",
                     "message": str(e),
+                    "type": type(e).__name__,
+                    "trace": traceback.format_exc(),
                 },
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )
@@ -199,10 +207,13 @@ class SuburbStatsEditPDFFromSampleJSONView(APIView):
             )
 
         except Exception as e:
+            logger.exception("Suburb stats pie chart analysis failed")
             return Response(
                 {
                     "status": "error",
                     "message": str(e),
+                    "type": type(e).__name__,
+                    "trace": traceback.format_exc(),
                 },
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR,
             )

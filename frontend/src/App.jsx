@@ -72,16 +72,30 @@ function App() {
         Backend may return different key names.
         So we check multiple possible names.
       */
-      const returnedUrl =
-        data.chart_url ||
-        data.graph_url ||
-        data.image_url ||
-        data.pdf_url ||
-        data.edited_pdf_url ||
-        data.file_url ||
-        data.output_url;
+      console.log("Backend response:", data);
+
+      let returnedUrl;
+
+      if (isMarketTab) {
+        returnedUrl =
+          data.chart_url ||
+          data.graph_url ||
+          data.image_url ||
+          data.output_url;
+      } else {
+        returnedUrl =
+          data.edited_pdf_url ||
+          data.pdf_url ||
+          data.file_url ||
+          data.output_url;
+      }
+
+      console.log("Returned URL before formatting:", returnedUrl);
 
       const fullUrl = getFullMediaUrl(returnedUrl);
+      console.log("RAW BACKEND URL:", returnedUrl);
+      console.log("FINAL IFRAME URL:", fullUrl);
+      console.log("Final preview URL:", fullUrl);
 
       setOutputUrl(fullUrl);
 
@@ -187,7 +201,7 @@ function App() {
 
             <p>
               {isMarketTab
-                ? "This tool will upload the report to Django, process the Long Term Market Trends section, and show the generated graph in a preview modal."
+                ? "This tool will upload the report, process the Long Term Market Trends section, and show the generated graph in a preview modal."
                 : "This tool will upload the suburb statistics report, edit the PDF output, and show the edited PDF in a preview modal."}
             </p>
           </div>
@@ -245,7 +259,7 @@ function App() {
 
           <div className="step-card">
             <h3>2. Process</h3>
-            <p>The file is sent to your Django backend API.</p>
+            <p>The file is sent to your backend API.</p>
           </div>
 
           <div className="step-card">
@@ -298,8 +312,20 @@ function OutputModal({ title, url, type, onClose }) {
           )}
 
           {url && type === "pdf" && (
-            <iframe className="pdf-preview" src={url} title="PDF Preview" />
-          )}
+  <object
+    className="pdf-preview"
+    data={url}
+    type="application/pdf"
+  >
+    <div className="no-preview">
+      <h3>PDF preview is not available in this browser.</h3>
+      <p>Please open the PDF in a new tab or download it.</p>
+      <a href={url} target="_blank" rel="noreferrer">
+        Open PDF
+      </a>
+    </div>
+  </object>
+)}
         </div>
 
         <div className="modal-footer">
@@ -311,7 +337,7 @@ function OutputModal({ title, url, type, onClose }) {
               rel="noreferrer"
               className="download-btn"
             >
-              Download Output
+              Open / Download Output
             </a>
           )}
 
