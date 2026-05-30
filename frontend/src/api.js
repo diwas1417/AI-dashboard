@@ -4,6 +4,7 @@ const API_ROOT = "http://127.0.0.1:8000";
 
 const MARKET_TREND_ENDPOINT = `${API_ROOT}/api/chat/market-trends/analyse/`;
 const SUBURB_PDF_ENDPOINT = `${API_ROOT}/api/chat/suburb-stats/pie-charts/`;
+const AMENITY_SCORE_ENDPOINT = `${API_ROOT}/api/chat/amenity-score/`;
 
 export async function uploadMarketTrendPdf(file) {
     const formData = new FormData();
@@ -26,6 +27,15 @@ export async function uploadSuburbPdf(file) {
         headers: {
             "Content-Type": "multipart/form-data",
         },
+    });
+
+    return response.data;
+}
+
+export async function getAmenityScore(address) {
+    const response = await axios.post(AMENITY_SCORE_ENDPOINT, {
+        address: address,
+        use_openai_research: true,
     });
 
     return response.data;

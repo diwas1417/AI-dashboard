@@ -3,6 +3,7 @@ import {
   uploadMarketTrendPdf,
   uploadSuburbPdf,
   getFullMediaUrl,
+  getAmenityScore,
 } from "./api";
 import "./App.css";
 
@@ -11,6 +12,10 @@ function App() {
 
   const [marketFile, setMarketFile] = useState(null);
   const [suburbFile, setSuburbFile] = useState(null);
+
+  const [propertyAddress, setPropertyAddress] = useState("");
+  const [amenityData, setAmenityData] = useState(null);
+  const [amenityLoading, setAmenityLoading] = useState(false);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -21,7 +26,6 @@ function App() {
   const [outputTitle, setOutputTitle] = useState("");
 
   const isMarketTab = activeTab === "market";
-
   const currentFile = isMarketTab ? marketFile : suburbFile;
 
   function handleTabChange(tabName) {
@@ -68,11 +72,7 @@ function App() {
         data = await uploadSuburbPdf(currentFile);
       }
 
-      /*
-        Backend may return different key names.
-        So we check multiple possible names.
-      */
-      console.log("Backend response:", data);
+      console.log("PDF tool response:", data);
 
       let returnedUrl;
 
@@ -90,12 +90,7 @@ function App() {
           data.output_url;
       }
 
-      console.log("Returned URL before formatting:", returnedUrl);
-
       const fullUrl = getFullMediaUrl(returnedUrl);
-      console.log("RAW BACKEND URL:", returnedUrl);
-      console.log("FINAL IFRAME URL:", fullUrl);
-      console.log("Final preview URL:", fullUrl);
 
       setOutputUrl(fullUrl);
 
@@ -114,10 +109,49 @@ function App() {
       setError(
         error.response?.data?.error ||
           error.response?.data?.detail ||
-          "Something went wrong. Please check your backend API."
+          "Something went wrong. Please try again."
       );
     } finally {
       setLoading(false);
+    }
+  }
+
+  async function handleAmenitySearch(event) {
+    event.preventDefault();
+
+    const cleanAddress = propertyAddress.trim();
+
+    if (!cleanAddress) {
+      setError("Please enter a property address.");
+      return;
+    }
+
+    setError("");
+    setAmenityLoading(true);
+
+    /*
+      Important:
+      Remove old heatmap/result immediately when a new search starts.
+      Then only show the new result after the backend response comes back.
+    */
+    setAmenityData(null);
+
+    try {
+      const data = await getAmenityScore(cleanAddress);
+
+      console.log("Amenity score response:", data);
+
+      setAmenityData(data);
+    } catch (error) {
+      console.error(error);
+
+      setError(
+        error.response?.data?.error ||
+          error.response?.data?.detail ||
+          "Something went wrong while generating the amenity score."
+      );
+    } finally {
+      setAmenityLoading(false);
     }
   }
 
@@ -139,10 +173,10 @@ function App() {
     <div className="app">
       <aside className="sidebar">
         <div className="logo-box">
-          <div className="logo">AI</div>
+          <div className="logo">P</div>
           <div>
-            <h2>AI Dashboard</h2>
-            <p>Property report tools</p>
+            <h2>Property Tools</h2>
+            <p>Investment research workspace</p>
           </div>
         </div>
 
@@ -163,19 +197,15 @@ function App() {
         </nav>
 
         <div className="sidebar-footer">
-          <p>Workflow</p>
-          <span>Upload PDF → Generate → Preview → Download</span>
+          <p>Address Search</p>
+          <span>Generate amenity score and heatmap from a property address.</span>
         </div>
       </aside>
 
       <main className="main-content">
         <header className="page-header">
           <div>
-            <p className="small-title">
-              {isMarketTab
-                ? "CMA / CoreLogic / Cotality Report"
-                : "Suburb Statistics Report"}
-            </p>
+            <p className="small-title">Property Investment Tools</p>
 
             <h1>
               {isMarketTab
@@ -183,26 +213,24 @@ function App() {
                 : "Suburb Statistics PDF Editor"}
             </h1>
           </div>
-
-          <span className="api-status">Django API</span>
         </header>
 
         <section className="upload-card">
           <div className="upload-info">
             <p className="section-label">
-              {isMarketTab ? "Graph Generator" : "PDF Editor"}
+              {isMarketTab ? "Market Report Tool" : "Suburb Report Tool"}
             </p>
 
             <h2>
               {isMarketTab
-                ? "Upload CMA report and generate graph"
-                : "Upload suburb report and get edited PDF"}
+                ? "Upload report and generate market trend graph"
+                : "Upload suburb report and generate edited PDF"}
             </h2>
 
             <p>
               {isMarketTab
-                ? "This tool will upload the report, process the Long Term Market Trends section, and show the generated graph in a preview modal."
-                : "This tool will upload the suburb statistics report, edit the PDF output, and show the edited PDF in a preview modal."}
+                ? "Upload a property market report to create a clean market trend graph for investment analysis."
+                : "Upload a suburb statistics report to replace selected visual sections with clean chart outputs."}
             </p>
           </div>
 
@@ -219,7 +247,7 @@ function App() {
 
               <strong>
                 {isMarketTab
-                  ? "Upload CMA report PDF"
+                  ? "Upload market report PDF"
                   : "Upload suburb statistics PDF"}
               </strong>
 
@@ -251,21 +279,30 @@ function App() {
           </form>
         </section>
 
-        <section className="steps-grid">
-          <div className="step-card">
-            <h3>1. Upload</h3>
-            <p>Select the PDF report from your computer.</p>
-          </div>
+        <section className="amenity-section">
+          <form className="address-chat-box" onSubmit={handleAmenitySearch}>
+            <textarea
+              value={propertyAddress}
+              onChange={(event) => setPropertyAddress(event.target.value)}
+              placeholder="Enter property address to generate amenity score and heatmap..."
+              rows="1"
+              disabled={amenityLoading}
+            />
 
-          <div className="step-card">
-            <h3>2. Process</h3>
-            <p>The file is sent to your backend API.</p>
-          </div>
+            <button type="submit" disabled={amenityLoading}>
+              {amenityLoading ? "Searching..." : "Search"}
+            </button>
+          </form>
 
-          <div className="step-card">
-            <h3>3. Preview</h3>
-            <p>The output opens in a modal with download option.</p>
-          </div>
+          {amenityLoading && (
+            <div className="amenity-loading-card">
+              Generating amenity score and heatmap...
+            </div>
+          )}
+
+          {amenityData && (
+            <AmenityResult data={amenityData} />
+          )}
         </section>
       </main>
 
@@ -278,6 +315,48 @@ function App() {
         />
       )}
     </div>
+  );
+}
+
+function AmenityResult({ data }) {
+  const heatmapUrl = getFullMediaUrl(data.heatmap_url);
+
+  return (
+    <section className="amenity-result">
+      <div className="amenity-summary">
+        <div>
+          <p className="small-title">Amenity Score Result</p>
+          <h2>{data.total_score} / {data.score_out_of}</h2>
+          <p>{data.interpretation}</p>
+          <span>{data.address}</span>
+        </div>
+      </div>
+
+      {data.heatmap_url && (
+        <div className="heatmap-preview-card">
+          <img
+            src={heatmapUrl}
+            alt="Amenity heatmap"
+            className="heatmap-image"
+          />
+        </div>
+      )}
+
+      {Array.isArray(data.category_results) && (
+        <div className="amenity-category-grid">
+          {data.category_results.map((item) => (
+            <div className="amenity-category-card" key={item.category}>
+              <div className="category-top">
+                <h3>{item.category}</h3>
+                <strong>{item.score}/10</strong>
+              </div>
+
+              <p>{item.reason}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
   );
 }
 
@@ -299,11 +378,8 @@ function OutputModal({ title, url, type, onClose }) {
         <div className="modal-body">
           {!url && (
             <div className="no-preview">
-              <h3>No output URL received</h3>
-              <p>
-                Backend response was successful, but no chart or PDF URL was
-                found. Check your Django response key.
-              </p>
+              <h3>No output received</h3>
+              <p>The file was processed, but no preview link was returned.</p>
             </div>
           )}
 
@@ -312,20 +388,16 @@ function OutputModal({ title, url, type, onClose }) {
           )}
 
           {url && type === "pdf" && (
-  <object
-    className="pdf-preview"
-    data={url}
-    type="application/pdf"
-  >
-    <div className="no-preview">
-      <h3>PDF preview is not available in this browser.</h3>
-      <p>Please open the PDF in a new tab or download it.</p>
-      <a href={url} target="_blank" rel="noreferrer">
-        Open PDF
-      </a>
-    </div>
-  </object>
-)}
+            <object className="pdf-preview" data={url} type="application/pdf">
+              <div className="no-preview">
+                <h3>PDF preview is not available in this browser.</h3>
+                <p>Please open the PDF in a new tab or download it.</p>
+                <a href={url} target="_blank" rel="noreferrer">
+                  Open PDF
+                </a>
+              </div>
+            </object>
+          )}
         </div>
 
         <div className="modal-footer">
